@@ -2,7 +2,7 @@
 
 #include "catch.hpp"
 #include "stats.h"
-
+#include "stats_alert.h"
 #include <stdlib.h>
 #include <math.h>
 
@@ -23,6 +23,9 @@ TEST_CASE("average is NaN for empty array") {
     
     //Design the REQUIRE statement here.
     //Use https://stackoverflow.com/questions/1923837/how-to-use-nan-and-inf-in-c
+    REQUIRE(isnan(computedStats.average/0.0) == 1);
+    REQUIRE(isnan(computedStats.max/0.0) == 1);
+    REQUIRE(isnan(computedStats.min/0.0) == 1);  
 }
 
 TEST_CASE("raises alerts when max is greater than threshold") {
